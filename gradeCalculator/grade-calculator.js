@@ -2,26 +2,32 @@ const score = document.getElementById("score");
 const calculateButton = document.getElementById("calculate");
 const result = document.getElementById("result");
 
-function calculateGrade() {
-  const studentScore = parseInt(score.value);
+function setResult(text) {
+  result.innerText = text;
+}
 
-  if (studentScore >= "80" && studentScore <= "100") {
-    result.innerHTML = "A+";
-  } else if (studentScore >= "70" && studentScore < "80") {
-    result.innerHTML = "A";
-  } else if (studentScore >= "60" && studentScore < "70") {
-    result.innerHTML = "A-";
-  } else if (studentScore >= "50" && studentScore < "60") {
-    result.innerHTML = "B";
-  }else if (studentScore >= "40" && studentScore < "50") {
-    result.innerHTML = "C";
-  } else if (studentScore >= "33" && studentScore < "40") {
-    result.innerHTML = "D";
-  }else if (studentScore >= "0" && studentScore < "33") {
-    result.innerHTML = "F";
+function calculateGrade() {
+  const studentScore = parseFloat(score.value);
+  let displayText= '';
+
+  if (studentScore >= 80 && studentScore <= 100) {
+    displayText= "A+";
+  } else if (studentScore >= 70 && studentScore < 80) {
+    displayText="A";
+  } else if (studentScore >= 60 && studentScore < 70) {
+    displayText="A-";
+  } else if (studentScore >= 50 && studentScore < 60) {
+    displayText="B";
+  } else if (studentScore >= 40 && studentScore < 50) {
+    displayText="C";
+  } else if (studentScore >= 33 && studentScore < 40) {
+    displayText="D";
+  } else if (studentScore >= 0 && studentScore < 33) {
+    displayText="F";
   } else {
-    result.innerHTML = "Invalid Score";
+    setResult("Invalid Score");
   }
+  setResult(displayText);
 }
 
 calculateButton.addEventListener("click", calculateGrade);
